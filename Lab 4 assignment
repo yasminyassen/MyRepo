@@ -1,0 +1,56 @@
+#include <iostream> 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+class Shape {
+       protected:
+       double width;
+       double height;
+public:
+    Shape(){
+       this->width = 0;
+       this->height = 0;
+    }
+    Shape( double w, double h){
+       this->width = w;
+       this->height = h;
+    }
+    virtual double getArea() = 0 ; 
+};
+class Cicle : public Shape{
+    public:
+    Cicle(double radius): Shape (radius,0){}
+    double getArea(){
+        cout<<"The Area Of Cicle is : ";
+        return( 3.14 * width * width );
+    }
+};
+class Rectangle : public Shape{
+   public :
+   Rectangle(double width , double hight):Shape( width ,  hight) {}
+   double getArea(){
+    cout << "The Area Of Rectangle is : " ;
+    return ( this->width * this->height );
+   }
+};
+class Triangle : public Shape{
+    public:
+    Triangle (double base ,double hight ):Shape(base,hight){}
+    double getArea(){
+        cout<<"The Area Of Triangle is : ";
+        return ( 0.5 * width * height );
+    }
+};
+int main(){
+    Shape *shape;
+    shape = new Cicle(10);
+    cout << shape->getArea()<<endl;
+
+    shape = new Rectangle(6,3);
+    cout << shape->getArea()<<endl;
+
+    shape = new Triangle(8,7);
+    cout<< shape->getArea()<<endl;
+
+    return 0;
+ }
